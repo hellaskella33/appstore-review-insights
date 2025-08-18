@@ -1,0 +1,174 @@
+{
+  "composition_info": {
+    "composed_at": "2025-08-18T15:40:06.401926+00:00",
+    "total_reviews": 50,
+    "negative_reviews": 19,
+    "topics_discovered": 0,
+    "outliers": 19,
+    "text_column_used": "review_clean_translated",
+    "sentiment_column_used": "review_sentiment_class",
+    "min_topic_size": 5,
+    "language_model": "all-MiniLM-L6-v2"
+  },
+  "topic_modeling": {
+    "modeling_info": {
+      "analyzed_at": "2025-08-18T15:40:06.400753+00:00",
+      "total_reviews": 50,
+      "negative_reviews": 19,
+      "topics_discovered": 0,
+      "outliers": 19,
+      "text_column_used": "review_clean_translated",
+      "sentiment_column_used": "review_sentiment_class",
+      "min_topic_size": 5,
+      "language_model": "all-MiniLM-L6-v2"
+    },
+    "topics": {},
+    "raw_data": {
+      "topic_assignments": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "topic_probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "negative_review_indices": [
+        1,
+        5,
+        6,
+        11,
+        13,
+        17,
+        18,
+        24,
+        25,
+        27,
+        28,
+        33,
+        35,
+        37,
+        39,
+        41,
+        42,
+        44,
+        49
+      ]
+    }
+  },
+  "insights_preparation": {
+    "overview": {
+      "app_info": {
+        "name": "Unknown App",
+        "versions_reviewed": [
+          "41.2.0"
+        ],
+        "countries": [
+          "us"
+        ]
+      },
+      "review_distribution": {
+        "total_reviews": 50,
+        "rating_distribution": {
+          "1": {
+            "count": 21,
+            "percentage": 42.0
+          },
+          "2": {
+            "count": 3,
+            "percentage": 6.0
+          },
+          "3": {
+            "count": 8,
+            "percentage": 16.0
+          },
+          "4": {
+            "count": 3,
+            "percentage": 6.0
+          },
+          "5": {
+            "count": 15,
+            "percentage": 30.0
+          }
+        },
+        "average_rating": 2.76
+      },
+      "sentiment_breakdown": {
+        "total_analyzed": 50,
+        "distribution": {
+          "positive": {
+            "count": 22,
+            "percentage": 44.0
+          },
+          "negative": {
+            "count": 19,
+            "percentage": 38.0
+          },
+          "neutral": {
+            "count": 9,
+            "percentage": 18.0
+          }
+        }
+      },
+      "time_period": {
+        "earliest_review": "2025-08-16",
+        "latest_review": "2025-08-16",
+        "date_span_days": 0
+      }
+    },
+    "negative_review_analysis": {
+      "total_negative": 19,
+      "topics_found": 0,
+      "topic_breakdown": []
+    },
+    "prompts_for_llm": {
+      "main_context": "",
+      "topic_contexts": {}
+    }
+  },
+  "summary": {
+    "analysis_scope": {
+      "total_reviews": 50,
+      "negative_reviews": 19,
+      "complaint_themes": 0
+    },
+    "key_findings": {
+      "biggest_complaint_themes": [],
+      "reviews_categorized": 0,
+      "uncategorized_reviews": 19
+    }
+  }
+}

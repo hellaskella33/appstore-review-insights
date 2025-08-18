@@ -1,0 +1,33 @@
+{
+  "translated_at": "2025-08-18T15:37:02.550713+00:00",
+  "source_file": "storage/analysis_20250818_183625_835599320/processed_reviews.csv",
+  "target_language": "English",
+  "total_reviews": 50,
+  "translated_reviews": 33,
+  "languages_detected": {
+    "en": 62,
+    "es": 1,
+    "no": 3,
+    "et": 1,
+    "sl": 2,
+    "fr": 1,
+    "unknown": 5,
+    "sq": 5,
+    "it": 3,
+    "ca": 1,
+    "id": 5,
+    "de": 2,
+    "pt": 2,
+    "da": 1,
+    "sv": 2,
+    "af": 2,
+    "sw": 1,
+    "sk": 1
+  },
+  "translation_errors": 0,
+  "api_requests": 31,
+  "columns_translated": [
+    "title_clean",
+    "review_clean"
+  ]
+}

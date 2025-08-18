@@ -1,0 +1,283 @@
+{
+  "composition_info": {
+    "composed_at": "2025-08-18T15:32:47.151265+00:00",
+    "total_reviews": 50,
+    "negative_reviews": 14,
+    "topics_discovered": 2,
+    "outliers": 7,
+    "text_column_used": "review_clean_translated",
+    "sentiment_column_used": "review_sentiment_class",
+    "min_topic_size": 3,
+    "language_model": "all-MiniLM-L6-v2"
+  },
+  "topic_modeling": {
+    "modeling_info": {
+      "analyzed_at": "2025-08-18T15:32:47.150413+00:00",
+      "total_reviews": 50,
+      "negative_reviews": 14,
+      "topics_discovered": 2,
+      "outliers": 7,
+      "text_column_used": "review_clean_translated",
+      "sentiment_column_used": "review_sentiment_class",
+      "min_topic_size": 3,
+      "language_model": "all-MiniLM-L6-v2"
+    },
+    "topics": {
+      "0": {
+        "topic_name": "the + new + has",
+        "review_count": 4,
+        "percentage_of_negative": 28.6,
+        "bertopic_words": [
+          "the",
+          "new",
+          "has",
+          "and",
+          "show",
+          "my",
+          "on",
+          "facebook",
+          "but",
+          "of"
+        ],
+        "key_phrases": [
+          {
+            "phrase": "new",
+            "score": 0.4394030385792417,
+            "length": 1
+          },
+          {
+            "phrase": "facebook",
+            "score": 0.4260394802604658,
+            "length": 1
+          },
+          {
+            "phrase": "ipad",
+            "score": 0.29306558737104077,
+            "length": 1
+          },
+          {
+            "phrase": "fb",
+            "score": 0.29306558737104077,
+            "length": 1
+          }
+        ],
+        "frequent_words": [
+          {
+            "word": "the",
+            "count": 8
+          },
+          {
+            "word": "and",
+            "count": 5
+          },
+          {
+            "word": "has",
+            "count": 4
+          },
+          {
+            "word": "new",
+            "count": 4
+          },
+          {
+            "word": "of",
+            "count": 4
+          },
+          {
+            "word": "facebook",
+            "count": 3
+          },
+          {
+            "word": "this",
+            "count": 3
+          },
+          {
+            "word": "my",
+            "count": 3
+          },
+          {
+            "word": "but",
+            "count": 3
+          },
+          {
+            "word": "on",
+            "count": 3
+          }
+        ],
+        "sample_reviews": [
+          "Facebook has never had this before. This is new and as many times as the privacy for Facebook has been updated I always go into my settings and change to make sure. I have everything private. But I get random verified people on my newsfeed and I keep clicking the show less show no more but I still keep getting it.",
+          "The FB iPad app has always been kind of a mess with things not loading correctly and insanely bad sorting of posts. Now they moved the Like button to the bottom right for some stupid reason and made some other horrible design decisions.",
+          "Whatever you just did has screwed up the notification badges. On my iPad it keeps showing a number of new notifications but new ones do not show up on the actual fb notification list. I noticed this yesterday."
+        ]
+      }
+    },
+    "raw_data": {
+      "topic_assignments": [
+        -1,
+        -1,
+        0,
+        1,
+        0,
+        -1,
+        -1,
+        -1,
+        -1,
+        1,
+        -1,
+        0,
+        1,
+        0
+      ],
+      "topic_probabilities": [
+        0.5487877095603287,
+        0.4351778830185053,
+        1.0,
+        9.018253681109186e-309,
+        0.6119442914103825,
+        0.3690026766351238,
+        0.6070361596507233,
+        0.32748452797292626,
+        0.4094156521999271,
+        6.89373019875171e-309,
+        0.2524177161023443,
+        1.0,
+        7.13277905406935e-309,
+        1.0
+      ],
+      "negative_review_indices": [
+        0,
+        1,
+        8,
+        18,
+        20,
+        28,
+        31,
+        33,
+        38,
+        41,
+        42,
+        43,
+        47,
+        49
+      ]
+    }
+  },
+  "insights_preparation": {
+    "overview": {
+      "app_info": {
+        "name": "Unknown App",
+        "versions_reviewed": [
+          "526.0.0"
+        ],
+        "countries": [
+          "us"
+        ]
+      },
+      "review_distribution": {
+        "total_reviews": 50,
+        "rating_distribution": {
+          "1": {
+            "count": 24,
+            "percentage": 48.0
+          },
+          "2": {
+            "count": 5,
+            "percentage": 10.0
+          },
+          "3": {
+            "count": 4,
+            "percentage": 8.0
+          },
+          "4": {
+            "count": 7,
+            "percentage": 14.0
+          },
+          "5": {
+            "count": 10,
+            "percentage": 20.0
+          }
+        },
+        "average_rating": 2.48
+      },
+      "sentiment_breakdown": {
+        "total_analyzed": 50,
+        "distribution": {
+          "positive": {
+            "count": 20,
+            "percentage": 40.0
+          },
+          "neutral": {
+            "count": 16,
+            "percentage": 32.0
+          },
+          "negative": {
+            "count": 14,
+            "percentage": 28.0
+          }
+        }
+      },
+      "time_period": {
+        "earliest_review": "2025-08-16",
+        "latest_review": "2025-08-17",
+        "date_span_days": 0
+      }
+    },
+    "negative_review_analysis": {
+      "total_negative": 14,
+      "topics_found": 2,
+      "topic_breakdown": [
+        {
+          "topic_id": 0,
+          "topic_name": "the + new + has",
+          "review_count": 4,
+          "percentage": 28.6,
+          "key_phrases": [
+            "new",
+            "facebook",
+            "ipad",
+            "fb"
+          ],
+          "top_words": [
+            "the",
+            "and",
+            "has",
+            "new",
+            "of"
+          ],
+          "sample_reviews": [
+            "Facebook has never had this before. This is new and as many times as the privacy for Facebook has been updated I always go into my settings and change to make sure. I have everything private. But I get random verified people on my newsfeed and I keep clicking the show less show no more but I still keep getting it.",
+            "The FB iPad app has always been kind of a mess with things not loading correctly and insanely bad sorting of posts. Now they moved the Like button to the bottom right for some stupid reason and made some other horrible design decisions."
+          ]
+        }
+      ]
+    },
+    "prompts_for_llm": {
+      "main_context": "COMPREHENSIVE REVIEW ANALYSIS CONTEXT\n==================================================\n\nApp: Unknown App\nMarkets analyzed: us\nTotal reviews: 50\nAverage rating: 2.48/5\nSentiment distribution: positive: 40.0%, neutral: 32.0%, negative: 28.0%\n\nNEGATIVE REVIEW THEMES DISCOVERED:\nTotal negative reviews analyzed: 14\nDistinct complaint themes found: 2\n\n1. the + new + has (4 reviews, 28.6%)\n   Key issues: new, facebook, ipad\n",
+      "topic_contexts": {
+        "0": "Topic: the + new + has\nReviews in this topic: 4 (28.6% of negative reviews)\n\nKey phrases identified:\n- 'new' (relevance: 0.439)\n- 'facebook' (relevance: 0.426)\n- 'ipad' (relevance: 0.293)\n- 'fb' (relevance: 0.293)\n\nMost frequent words:\n- 'the' (8 times)\n- 'and' (5 times)\n- 'has' (4 times)\n- 'new' (4 times)\n- 'of' (4 times)\n\nSample reviews from this topic:\n1. \"Facebook has never had this before. This is new and as many times as the privacy for Facebook has been updated I always go into my settings and change to make sure. I have everything private. But I ge...\"\n2. \"The FB iPad app has always been kind of a mess with things not loading correctly and insanely bad sorting of posts. Now they moved the Like button to the bottom right for some stupid reason and made s...\"\n"
+      }
+    }
+  },
+  "summary": {
+    "analysis_scope": {
+      "total_reviews": 50,
+      "negative_reviews": 14,
+      "complaint_themes": 2
+    },
+    "key_findings": {
+      "biggest_complaint_themes": [
+        {
+          "theme": "the + new + has",
+          "reviews": 4,
+          "percentage": 28.6,
+          "top_issues": [
+            "new",
+            "facebook",
+            "ipad"
+          ]
+        }
+      ],
+      "reviews_categorized": 7,
+      "uncategorized_reviews": 7
+    }
+  }
+}

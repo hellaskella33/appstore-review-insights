@@ -1,0 +1,95 @@
+{
+  "total_reviews": 100,
+  "negative_reviews": 28,
+  "topics_discovered": 3,
+  "metrics": {
+    "rating_distribution": {
+      "total_reviews": 100,
+      "rating_distribution": {
+        "1": {
+          "count": 44,
+          "percentage": 44.0
+        },
+        "2": {
+          "count": 11,
+          "percentage": 11.0
+        },
+        "3": {
+          "count": 9,
+          "percentage": 9.0
+        },
+        "4": {
+          "count": 9,
+          "percentage": 9.0
+        },
+        "5": {
+          "count": 27,
+          "percentage": 27.0
+        }
+      },
+      "average_rating": 2.64
+    },
+    "sentiment_distribution": {
+      "total_analyzed": 100,
+      "distribution": {
+        "positive": {
+          "count": 44,
+          "percentage": 44.0
+        },
+        "negative": {
+          "count": 28,
+          "percentage": 28.0
+        },
+        "neutral": {
+          "count": 28,
+          "percentage": 28.0
+        }
+      }
+    },
+    "country_breakdown": [
+      "us",
+      "gb"
+    ],
+    "main_complaints": [
+      {
+        "theme": "the + to + you",
+        "reviews": 10,
+        "percentage": 35.7,
+        "top_issues": [
+          "app",
+          "posts",
+          "sort"
+        ]
+      },
+      {
+        "theme": "the + and + of",
+        "reviews": 9,
+        "percentage": 32.1,
+        "top_issues": [
+          "social",
+          "hate",
+          "platform"
+        ]
+      },
+      {
+        "theme": "account + my + standards",
+        "reviews": 3,
+        "percentage": 10.7,
+        "top_issues": [
+          "facebook"
+        ]
+      }
+    ],
+    "negative_percentage": 28.0
+  },
+  "insights": null,
+  "files": {
+    "raw_reviews": "storage/analysis_20250818_182801_284882215/raw_reviews_20250818-152801.csv",
+    "processed_reviews": "storage/analysis_20250818_182801_284882215/processed_reviews.csv",
+    "translated_reviews": "storage/analysis_20250818_182801_284882215/translated_reviews.csv",
+    "sentiment_reviews": "storage/analysis_20250818_182801_284882215/sentiment_reviews.csv",
+    "composed_analysis": "storage/analysis_20250818_182801_284882215/composed_analysis.json",
+    "insights": null
+  },
+  "processed_at": "2025-08-18T15:29:21.689859+00:00"
+}

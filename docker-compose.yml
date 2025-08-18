@@ -1,0 +1,77 @@
+version: '3.8'
+
+services:
+  # Complete service with both API and Streamlit
+  app-insights:
+    build: .
+    ports:
+      - "8000:8000"  # FastAPI
+      - "8501:8501"  # Streamlit
+    volumes:
+      - ./storage:/app/storage
+      - ./data:/app/data  # For any additional data
+    environment:
+      - PYTHONPATH=/app
+      - OPENAI_API_KEY=${OPENAI_API_KEY}  # Optional: set in .env file
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  # API-only service
+  api:
+    build: .
+    command: ["api"]
+    ports:
+      - "8002:8000"
+    volumes:
+      - ./storage:/app/storage
+      - ./data:/app/data
+    environment:
+      - PYTHONPATH=/app
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    restart: unless-stopped
+    networks:
+      - app-network
+    profiles:
+      - api-only
+
+  # Streamlit-only service
+  streamlit:
+    build: .
+    command: ["streamlit"]
+    ports:
+      - "8502:8501"
+    volumes:
+      - ./storage:/app/storage
+      - ./data:/app/data
+    environment:
+      - PYTHONPATH=/app
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    restart: unless-stopped
+    networks:
+      - app-network
+    profiles:
+      - streamlit-only
+
+  # Nginx reverse proxy (optional)
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - app-insights
+    restart: unless-stopped
+    networks:
+      - app-network
+    profiles:
+      - with-nginx
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  storage_data:
+  app_data:

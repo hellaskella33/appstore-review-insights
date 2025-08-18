@@ -1,0 +1,38 @@
+{
+  "analyzed_at": "2025-08-18T15:32:44.067140+00:00",
+  "source_file": "storage/analysis_20250818_183203_284882215/translated_reviews.csv",
+  "total_reviews": 50,
+  "analyzed_reviews": 100,
+  "sentiment_summary": {
+    "total_reviews": 50,
+    "analyzed_reviews": 100,
+    "sentiment_distribution": {
+      "positive": 27,
+      "negative": 21,
+      "neutral": 52
+    },
+    "average_scores": {
+      "positive": 0.133,
+      "negative": 0.081,
+      "neutral": 0.787,
+      "compound": 0.05
+    },
+    "overall_sentiment": "positive"
+  },
+  "columns_analyzed": null,
+  "vader_version": "3.3.2",
+  "new_columns_added": [
+    "title_sentiment_positive",
+    "title_sentiment_negative",
+    "title_sentiment_neutral",
+    "title_sentiment_compound",
+    "title_sentiment_class",
+    "title_sentiment_intensity",
+    "review_sentiment_positive",
+    "review_sentiment_negative",
+    "review_sentiment_neutral",
+    "review_sentiment_compound",
+    "review_sentiment_class",
+    "review_sentiment_intensity"
+  ]
+}
