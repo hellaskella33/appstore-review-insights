@@ -1,0 +1,31 @@
+{
+  "translated_at": "2025-08-19T10:14:18.966825+00:00",
+  "source_file": "storage/analysis_20250819_101352_instagram/processed_reviews.csv",
+  "target_language": "English",
+  "total_reviews": 50,
+  "translated_reviews": 22,
+  "languages_detected": {
+    "en": 70,
+    "unknown": 8,
+    "id": 3,
+    "ca": 2,
+    "fr": 2,
+    "de": 3,
+    "et": 1,
+    "no": 2,
+    "es": 2,
+    "af": 1,
+    "so": 1,
+    "tl": 1,
+    "ro": 1,
+    "sl": 1,
+    "fi": 1,
+    "ru": 1
+  },
+  "translation_errors": 0,
+  "api_requests": 22,
+  "columns_translated": [
+    "title_clean",
+    "review_clean"
+  ]
+}

@@ -1,23 +1,23 @@
 {
-  "analyzed_at": "2025-08-19T10:06:24.477231+00:00",
-  "source_file": "storage/analysis_20250819_100548_facebook/translated_reviews.csv",
+  "analyzed_at": "2025-08-19T10:14:19.010351+00:00",
+  "source_file": "storage/analysis_20250819_101352_instagram/translated_reviews.csv",
   "total_reviews": 50,
   "analyzed_reviews": 100,
   "sentiment_summary": {
     "total_reviews": 50,
     "analyzed_reviews": 100,
     "sentiment_distribution": {
-      "positive": 35,
-      "negative": 23,
-      "neutral": 42
+      "positive": 24,
+      "negative": 40,
+      "neutral": 36
     },
     "average_scores": {
-      "positive": 0.171,
-      "negative": 0.064,
-      "neutral": 0.764,
-      "compound": 0.096
+      "positive": 0.085,
+      "negative": 0.168,
+      "neutral": 0.747,
+      "compound": -0.086
     },
-    "overall_sentiment": "positive"
+    "overall_sentiment": "negative"
   },
   "columns_analyzed": null,
   "vader_version": "3.3.2",

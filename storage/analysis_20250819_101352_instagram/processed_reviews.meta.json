@@ -1,6 +1,6 @@
 {
-  "processed_at": "2025-08-19T10:05:49.826988+00:00",
-  "source_file": "storage/analysis_20250819_100548_facebook/raw_reviews_20250819-100549.csv",
+  "processed_at": "2025-08-19T10:13:52.989529+00:00",
+  "source_file": "storage/analysis_20250819_101352_instagram/raw_reviews_20250819-101352.csv",
   "original_count": 50,
   "processed_count": 50,
   "fields_added": [
