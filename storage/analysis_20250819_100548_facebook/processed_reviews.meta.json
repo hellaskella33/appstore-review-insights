@@ -1,0 +1,20 @@
+{
+  "processed_at": "2025-08-19T10:05:49.826988+00:00",
+  "source_file": "storage/analysis_20250819_100548_facebook/raw_reviews_20250819-100549.csv",
+  "original_count": 50,
+  "processed_count": 50,
+  "fields_added": [
+    "title_clean",
+    "review_clean",
+    "title_normalized",
+    "review_normalized",
+    "text_clean",
+    "text_normalized",
+    "text_length",
+    "word_count",
+    "has_title",
+    "has_review",
+    "username_clean"
+  ],
+  "deduplicated": true
+}
