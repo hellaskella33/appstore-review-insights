@@ -22,7 +22,8 @@ A comprehensive tool for analyzing Apple App Store reviews using AI
 
 ```bash
 # Run both API and Streamlit
-docker-compose up --build
+docker compose up --build
+```
 
 ### Option 2: Local Installation
 
