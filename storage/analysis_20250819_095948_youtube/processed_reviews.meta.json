@@ -1,8 +1,8 @@
 {
-  "processed_at": "2025-08-18T15:28:01.840279+00:00",
-  "source_file": "storage/analysis_20250818_182801_284882215/raw_reviews_20250818-152801.csv",
-  "original_count": 100,
-  "processed_count": 100,
+  "processed_at": "2025-08-19T09:59:48.872551+00:00",
+  "source_file": "storage/analysis_20250819_095948_youtube/raw_reviews_20250819-095948.csv",
+  "original_count": 50,
+  "processed_count": 50,
   "fields_added": [
     "title_clean",
     "review_clean",

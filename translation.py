@@ -75,9 +75,18 @@ class Translator:
     """
     
     def __init__(self, api_key: Optional[str] = None):
-        self.api_key = api_key or os.getenv("OPEN_AI_API_KEY")
+        # Load environment variables first
+        load_dotenv()
+        
+        self.api_key = api_key or os.getenv("OPENAI_API_KEY")
+        
+        # Debug logging
         if not self.api_key:
-            raise TranslationError("OpenAI API key not found. Set OPEN_AI_API_KEY in .env file.")
+            print(f"📋 Debug: OPENAI_API_KEY not found in environment")
+            print(f"📋 Debug: Available env vars: {[k for k in os.environ.keys() if 'OPENAI' in k.upper()]}")
+            raise TranslationError("OpenAI API key not found. Set OPENAI_API_KEY in .env file.")
+        else:
+            print(f"📋 Debug: OpenAI API key loaded: {self.api_key[:12]}...{self.api_key[-8:] if len(self.api_key) > 20 else '***'}")
         
         self.client = OpenAI(api_key=self.api_key)
         self.translation_cache = {}  # Simple in-memory cache

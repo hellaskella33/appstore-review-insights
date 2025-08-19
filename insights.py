@@ -32,15 +32,23 @@ class ReviewInsightsGenerator:
         """
         self.model = model
         
+        # Load environment variables first
+        from dotenv import load_dotenv
+        load_dotenv()
+        
         # Initialize OpenAI client
         if api_key:
             self.client = OpenAI(api_key=api_key)
+            print(f"📋 Debug: Using provided API key: {api_key[:12]}...{api_key[-8:] if len(api_key) > 20 else '***'}")
         else:
             # Try to get from environment
             api_key_env = os.getenv('OPENAI_API_KEY')
             if not api_key_env:
+                print(f"📋 Debug: OPENAI_API_KEY not found in environment")
+                print(f"📋 Debug: Available env vars: {[k for k in os.environ.keys() if 'OPENAI' in k.upper()]}")
                 raise InsightsError("OpenAI API key required. Set OPENAI_API_KEY environment variable or provide api_key parameter.")
             self.client = OpenAI(api_key=api_key_env)
+            print(f"📋 Debug: Using environment API key: {api_key_env[:12]}...{api_key_env[-8:] if len(api_key_env) > 20 else '***'}")
         
         print(f"Initialized InsightsGenerator with model: {model}")
     

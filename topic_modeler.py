@@ -75,14 +75,26 @@ class ReviewTopicModeler:
         
         if self.tfidf_vectorizer is None:
             # TF-IDF for extracting key phrases within topics
+            # Custom stop words for app reviews
+            custom_stop_words = [
+                'app', 'tiktok', 'instagram', 'facebook', 'twitter', 'snapchat',
+                'the', 'and', 'to', 'of', 'in', 'a', 'an', 'is', 'it', 'that', 'this',
+                'with', 'for', 'on', 'at', 'by', 'from', 'they', 'be', 'or', 'as',
+                'but', 'not', 'have', 'had', 'has', 'was', 'were', 'been', 'are',
+                'will', 'would', 'could', 'should', 'can', 'my', 'me', 'i', 'you',
+                'your', 'we', 'our', 'us', 'he', 'she', 'him', 'her', 'his', 'their',
+                'really', 'just', 'like', 'get', 'go', 'know', 'think', 'want', 'need',
+                'use', 'used', 'using', 'good', 'bad', 'great', 'terrible', 'awful'
+            ]
+            
             self.tfidf_vectorizer = TfidfVectorizer(
-                max_features=1000,
-                ngram_range=(1, 3),  # Unigrams, bigrams, trigrams
-                stop_words='english',
-                max_df=0.8,
-                min_df=2,
+                max_features=500,  # Reduced to focus on most important terms
+                ngram_range=(1, 2),  # Unigrams and bigrams only
+                stop_words=custom_stop_words,
+                max_df=0.7,  # More restrictive
+                min_df=3,  # Require at least 3 occurrences
                 lowercase=True,
-                token_pattern=r'(?u)\b[A-Za-z]+\b'  # Only alphabetic tokens
+                token_pattern=r'(?u)\b[A-Za-z][A-Za-z]+\b'  # At least 2 letters
             )
     
     def filter_negative_reviews(
@@ -288,13 +300,41 @@ class ReviewTopicModeler:
         # Get topic words from BERTopic
         topics = self.topic_model.get_topics()
         
+        # Common stop words and function words to filter out
+        stop_words = {
+            'the', 'and', 'to', 'of', 'in', 'a', 'an', 'is', 'it', 'that', 'this',
+            'with', 'for', 'on', 'at', 'by', 'from', 'they', 'be', 'or', 'as',
+            'but', 'not', 'have', 'had', 'has', 'was', 'were', 'been', 'are',
+            'will', 'would', 'could', 'should', 'can', 'my', 'me', 'i', 'you',
+            'your', 'we', 'our', 'us', 'he', 'she', 'him', 'her', 'his', 'their'
+        }
+        
         for topic_id, words in topics.items():
             if topic_id == -1:  # Skip outlier topic
                 continue
             
-            # Get top 3 words for topic name
-            top_words = [word for word, _ in words[:3]]
-            topic_name = " + ".join(top_words)
+            # Filter out stop words and get meaningful words
+            meaningful_words = []
+            for word, _ in words[:10]:  # Look at top 10 words
+                if (word.lower() not in stop_words and 
+                    len(word) > 2 and 
+                    word.isalpha()):  # Only alphabetic words
+                    meaningful_words.append(word)
+                
+                # Stop when we have 3 meaningful words
+                if len(meaningful_words) >= 3:
+                    break
+            
+            # If we don't have enough meaningful words, use all available
+            if len(meaningful_words) == 0:
+                meaningful_words = [word for word, _ in words[:3] if len(word) > 1]
+            
+            # Create topic name
+            if meaningful_words:
+                topic_name = " + ".join(meaningful_words)
+            else:
+                topic_name = f"Topic {topic_id}"
+            
             topic_names[topic_id] = topic_name
         
         return topic_names

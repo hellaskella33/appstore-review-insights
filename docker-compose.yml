@@ -10,9 +10,10 @@ services:
     volumes:
       - ./storage:/app/storage
       - ./data:/app/data  # For any additional data
+    env_file:
+      - .env
     environment:
       - PYTHONPATH=/app
-      - OPENAI_API_KEY=${OPENAI_API_KEY}  # Optional: set in .env file
     restart: unless-stopped
     networks:
       - app-network
@@ -26,9 +27,10 @@ services:
     volumes:
       - ./storage:/app/storage
       - ./data:/app/data
+    env_file:
+      - .env
     environment:
       - PYTHONPATH=/app
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
     restart: unless-stopped
     networks:
       - app-network
@@ -44,9 +46,10 @@ services:
     volumes:
       - ./storage:/app/storage
       - ./data:/app/data
+    env_file:
+      - .env
     environment:
       - PYTHONPATH=/app
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
     restart: unless-stopped
     networks:
       - app-network

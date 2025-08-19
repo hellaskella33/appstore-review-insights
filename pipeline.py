@@ -41,7 +41,8 @@ class ReviewAnalysisPipeline:
     
     def run_complete_analysis(
         self,
-        app_id: str,
+        app_id: Optional[str] = None,
+        app_name: Optional[str] = None,
         countries: Optional[List[str]] = None,
         max_reviews_per_country: int = 100,
         min_topic_size: int = 5,
@@ -52,7 +53,8 @@ class ReviewAnalysisPipeline:
         Run the complete analysis pipeline.
         
         Args:
-            app_id: Apple App Store app ID
+            app_id: Apple App Store app ID (optional if app_name provided)
+            app_name: App name to search for (optional if app_id provided)
             countries: List of country codes (default: ['us'])
             max_reviews_per_country: Maximum reviews per country
             min_topic_size: Minimum reviews per topic for analysis
@@ -67,8 +69,15 @@ class ReviewAnalysisPipeline:
         """
         countries = countries or ['us']
         
-        # Create unique analysis directory
-        analysis_id = f"analysis_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{app_id}"
+        # Validate inputs
+        if not app_id and not app_name:
+            raise ValueError("Either app_id or app_name must be provided")
+        
+        # Create unique analysis directory (use app_id if available, or timestamp if app_name)
+        if app_id:
+            analysis_id = f"analysis_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{app_id}"
+        else:
+            analysis_id = f"analysis_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{app_name.replace(' ', '_').lower()}"
         analysis_dir = self.storage_dir / analysis_id
         analysis_dir.mkdir(exist_ok=True)
         
@@ -78,9 +87,12 @@ class ReviewAnalysisPipeline:
                 progress_callback("Collecting reviews from App Store...")
             print(f"📱 Collecting reviews from {countries}...")
             
+            # Convert app_id to int if provided, otherwise pass None
+            app_id_int = int(app_id) if app_id else None
+            
             raw_reviews = fetch_reviews_multi_country(
-                int(app_id),
-                None,  # app_name
+                app_id_int,
+                app_name,
                 countries,
                 max_reviews_per_country
             )
@@ -90,16 +102,21 @@ class ReviewAnalysisPipeline:
             
             # Normalize and save raw data
             df = normalize_dataframe(raw_reviews)
+            
+            # Extract app info from the data
+            app_info = {
+                "app_id": app_id or (df['app_id'].iloc[0] if 'app_id' in df.columns else None),
+                "app_name": app_name or (df['app_name'].iloc[0] if 'app_name' in df.columns and not df['app_name'].isna().iloc[0] else None),
+                "countries": countries,
+                "total_reviews": len(df),
+                "scraped_at": datetime.now(timezone.utc).isoformat()
+            }
+            
             raw_file_path, meta_file_path = write_outputs(
                 df,
                 analysis_dir,
                 "raw_reviews",
-                {
-                    "app_id": app_id,
-                    "countries": countries,
-                    "total_reviews": len(df),
-                    "scraped_at": datetime.now(timezone.utc).isoformat()
-                }
+                app_info
             )
             
             print(f"✅ Collected {len(df)} reviews")
@@ -120,7 +137,22 @@ class ReviewAnalysisPipeline:
             print("🌐 Translating reviews...")
             
             translated_file = analysis_dir / "translated_reviews.csv"
-            translate_csv_file(processed_file, translated_file)
+            try:
+                translate_csv_file(processed_file, translated_file)
+                print("✅ Translation completed")
+            except Exception as e:
+                print(f"⚠️ Warning: Translation failed: {e}")
+                print(f"📋 Debug: Will copy processed file as translated file for analysis continuation")
+                # Copy processed file as fallback
+                import shutil
+                shutil.copy2(processed_file, translated_file)
+                # Add basic language columns
+                df_fallback = pd.read_csv(translated_file)
+                df_fallback['detected_language'] = 'en'  # Assume English
+                df_fallback['language_confidence'] = 1.0
+                df_fallback['review_clean_translated'] = df_fallback['review_clean']  # Use original
+                df_fallback.to_csv(translated_file, index=False)
+                print("✅ Created fallback translated file")
             
             # Stage 4: Sentiment Analysis
             if progress_callback:
@@ -152,6 +184,7 @@ class ReviewAnalysisPipeline:
                     if progress_callback:
                         progress_callback("Generating AI insights...")
                     print("🧠 Generating AI insights...")
+                    print(f"📋 Debug: Using OpenAI API key: {openai_api_key[:12]}...{openai_api_key[-8:] if len(openai_api_key) > 20 else '***'}")
                     
                     insights_generator = ReviewInsightsGenerator(api_key=openai_api_key)
                     insights_data = insights_generator.generate_comprehensive_insights(composed_data)
@@ -160,11 +193,17 @@ class ReviewAnalysisPipeline:
                     with open(insights_file, 'w', encoding='utf-8') as f:
                         json.dump(insights_data, f, ensure_ascii=False, indent=2)
                     insights_file_path = str(insights_file)
+                    print("✅ AI insights generated successfully")
                     
                 except Exception as e:
                     print(f"⚠️ Warning: AI insights generation failed: {e}")
+                    print(f"📋 Debug: Error type: {type(e).__name__}")
+                    if hasattr(e, 'response'):
+                        print(f"📋 Debug: API response: {e.response}")
                     if progress_callback:
                         progress_callback(f"Warning: AI insights generation failed: {e}")
+            else:
+                print("ℹ️ No OpenAI API key provided - skipping AI insights generation")
             
             # Extract key metrics from composed data
             composition_info = composed_data["composition_info"]
@@ -255,8 +294,40 @@ class ReviewAnalysisPipeline:
                         with open(summary_file, 'r', encoding='utf-8') as f:
                             summary = json.load(f)
                         
+                        # Extract app_name from various sources
+                        app_name = None
+                        
+                        # Try to get from metadata first
+                        raw_meta_file = analysis_dir / f"raw_reviews_{analysis_dir.name.split('_')[1]}-{analysis_dir.name.split('_')[2][:6]}.meta.json"
+                        if raw_meta_file.exists():
+                            try:
+                                with open(raw_meta_file, 'r', encoding='utf-8') as f:
+                                    meta = json.load(f)
+                                app_name = meta.get("app_name")
+                            except:
+                                pass
+                        
+                        # If not in metadata, try to extract app_id and get from title if it contains app name
+                        if not app_name:
+                            app_id = None
+                            if "app_id" in summary:
+                                app_id = summary["app_id"]
+                            elif analysis_dir.name.split('_')[-1].isdigit():
+                                app_id = analysis_dir.name.split('_')[-1]
+                            
+                            # For known popular apps, provide names
+                            app_id_to_name = {
+                                "835599320": "TikTok",
+                                "389801252": "Instagram", 
+                                "310633997": "WhatsApp",
+                                "363590051": "Netflix",
+                                "324684580": "Spotify"
+                            }
+                            app_name = app_id_to_name.get(app_id, f"App {app_id}" if app_id else "Unknown App")
+                        
                         analyses.append({
                             "analysis_id": analysis_dir.name,
+                            "app_name": app_name,
                             "total_reviews": summary.get("total_reviews", 0),
                             "negative_reviews": summary.get("negative_reviews", 0),
                             "topics_discovered": summary.get("topics_discovered", 0),

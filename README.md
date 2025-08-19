@@ -24,11 +24,6 @@ A comprehensive tool for analyzing Apple App Store reviews using AI
 # Run both API and Streamlit
 docker-compose up --build
 
-# Access the applications:
-# - Streamlit Web UI: http://localhost:8501
-# - FastAPI Docs: http://localhost:8000/docs
-```
-
 ### Option 2: Local Installation
 
 ```bash

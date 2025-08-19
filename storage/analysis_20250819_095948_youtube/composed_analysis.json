@@ -1,10 +1,10 @@
 {
   "composition_info": {
-    "composed_at": "2025-08-18T15:40:06.401926+00:00",
+    "composed_at": "2025-08-19T10:00:20.168921+00:00",
     "total_reviews": 50,
-    "negative_reviews": 19,
+    "negative_reviews": 14,
     "topics_discovered": 0,
-    "outliers": 19,
+    "outliers": 14,
     "text_column_used": "review_clean_translated",
     "sentiment_column_used": "review_sentiment_class",
     "min_topic_size": 5,
@@ -12,11 +12,11 @@
   },
   "topic_modeling": {
     "modeling_info": {
-      "analyzed_at": "2025-08-18T15:40:06.400753+00:00",
+      "analyzed_at": "2025-08-19T10:00:20.165205+00:00",
       "total_reviews": 50,
-      "negative_reviews": 19,
+      "negative_reviews": 14,
       "topics_discovered": 0,
-      "outliers": 19,
+      "outliers": 14,
       "text_column_used": "review_clean_translated",
       "sentiment_column_used": "review_sentiment_class",
       "min_topic_size": 5,
@@ -25,11 +25,6 @@
     "topics": {},
     "raw_data": {
       "topic_assignments": [
-        -1,
-        -1,
-        -1,
-        -1,
-        -1,
         -1,
         -1,
         -1,
@@ -59,33 +54,23 @@
         0.0,
         0.0,
         0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
         0.0
       ],
       "negative_review_indices": [
-        1,
+        4,
         5,
-        6,
-        11,
+        8,
+        9,
         13,
-        17,
+        15,
         18,
-        24,
-        25,
-        27,
-        28,
-        33,
-        35,
-        37,
+        19,
+        34,
         39,
-        41,
-        42,
         44,
-        49
+        46,
+        47,
+        48
       ]
     }
   },
@@ -94,7 +79,7 @@
       "app_info": {
         "name": "Unknown App",
         "versions_reviewed": [
-          "41.2.0"
+          "20.32.5"
         ],
         "countries": [
           "us"
@@ -104,53 +89,53 @@
         "total_reviews": 50,
         "rating_distribution": {
           "1": {
-            "count": 21,
-            "percentage": 42.0
+            "count": 20,
+            "percentage": 40.0
           },
           "2": {
-            "count": 3,
-            "percentage": 6.0
+            "count": 1,
+            "percentage": 2.0
           },
           "3": {
-            "count": 8,
-            "percentage": 16.0
+            "count": 7,
+            "percentage": 14.0
           },
           "4": {
-            "count": 3,
-            "percentage": 6.0
+            "count": 4,
+            "percentage": 8.0
           },
           "5": {
-            "count": 15,
-            "percentage": 30.0
+            "count": 18,
+            "percentage": 36.0
           }
         },
-        "average_rating": 2.76
+        "average_rating": 2.98
       },
       "sentiment_breakdown": {
         "total_analyzed": 50,
         "distribution": {
           "positive": {
-            "count": 22,
-            "percentage": 44.0
+            "count": 24,
+            "percentage": 48.0
           },
           "negative": {
-            "count": 19,
-            "percentage": 38.0
+            "count": 15,
+            "percentage": 30.0
           },
           "neutral": {
-            "count": 9,
-            "percentage": 18.0
+            "count": 11,
+            "percentage": 22.0
           }
         }
       },
       "time_period": {
-        "earliest_review": "2025-08-16",
-        "latest_review": "2025-08-16",
+        "earliest_review": "2025-08-17",
+        "latest_review": "2025-08-17",
         "date_span_days": 0
       }
     },
     "negative_review_analysis": {
-      "total_negative": 19,
+      "total_negative": 14,
       "topics_found": 0,
       "topic_breakdown": []
     },
@@ -162,13 +147,13 @@
   "summary": {
     "analysis_scope": {
       "total_reviews": 50,
-      "negative_reviews": 19,
+      "negative_reviews": 14,
       "complaint_themes": 0
     },
     "key_findings": {
       "biggest_complaint_themes": [],
       "reviews_categorized": 0,
-      "uncategorized_reviews": 19
+      "uncategorized_reviews": 14
     }
   }
 }

@@ -1,0 +1,27 @@
+{
+  "translated_at": "2025-08-19T10:00:08.884964+00:00",
+  "source_file": "storage/analysis_20250819_095948_youtube/processed_reviews.csv",
+  "target_language": "English",
+  "total_reviews": 50,
+  "translated_reviews": 15,
+  "languages_detected": {
+    "en": 82,
+    "et": 1,
+    "ca": 3,
+    "so": 1,
+    "fr": 3,
+    "no": 1,
+    "af": 2,
+    "unknown": 3,
+    "ro": 1,
+    "bg": 1,
+    "ru": 1,
+    "vi": 1
+  },
+  "translation_errors": 0,
+  "api_requests": 15,
+  "columns_translated": [
+    "title_clean",
+    "review_clean"
+  ]
+}
