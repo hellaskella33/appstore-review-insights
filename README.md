@@ -1,20 +1,20 @@
-# 📱 App Store Review Insights
+#  App Store Review Insights
 
 A comprehensive tool for analyzing Apple App Store reviews using AI 
 
-## 🌟 Features
+##  Features
 
-- **📊 Complete Review Analysis**: Scrape, process, translate, and analyze App Store reviews
-- **🎯 Topic Modeling**: Discover common themes in negative reviews using BERTopic
-- **😊 Sentiment Analysis**: Analyze sentiment using VADER sentiment analysis
-- **🌐 Multi-country Support**: Analyze reviews from multiple countries
-- **🧠 AI-Powered Insights**: Generate detailed insights using OpenAI GPT
-- **📥 Data Export**: Download raw and processed data in CSV/JSON formats
-- **🖥️ Web Interface**: User-friendly Streamlit interface
-- **🚀 API Access**: RESTful API for programmatic access
-- **🐳 Docker Support**: Easy deployment with Docker and docker-compose
+- ** Complete Review Analysis**: Scrape, process, translate, and analyze App Store reviews
+- ** Topic Modeling**: Discover common themes in negative reviews using BERTopic
+- ** Sentiment Analysis**: Analyze sentiment using VADER sentiment analysis
+- ** Multi-country Support**: Analyze reviews from multiple countries
+- ** AI-Powered Insights**: Generate detailed insights using OpenAI GPT
+- ** Data Export**: Download raw and processed data in CSV/JSON formats
+- ** Web Interface**: User-friendly Streamlit interface
+- ** API Access**: RESTful API for programmatic access
+- ** Docker Support**: Easy deployment with Docker and docker-compose
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Before start we need to create .env file with OPEN_AI_API_KEY
 
@@ -71,7 +71,7 @@ curl "http://localhost:8000/download/{analysis_id}/raw_reviews" -O
 - **Netflix**: `363590051`
 - **Spotify**: `324684580`
 
-## 🐳 Docker Deployment
+##  Docker Deployment
 
 ```bash
 # Basic deployment
@@ -84,4 +84,4 @@ docker-compose --profile api-only up api
 docker-compose --profile streamlit-only up streamlit
 ```
 
-**Built with ❤️ for analyzing app store reviews and understanding user feedback**
+**Built for analyzing app store reviews and understanding user feedback**
